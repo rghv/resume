@@ -237,6 +237,10 @@
 % usage: \email{<email adress>}
 \newcommand*{\email}[1]{\def\@email{#1}}
 
+% defines one's secondary email (optional)
+% usage: \secemail{<email adress>}
+\newcommand*{\secemail}[1]{\def\@secemail{#1}}
+
 % defines one's home page (optional)
 % usage: \homepage{<url>}
 \newcommand*{\homepage}[1]{\def\@homepage{#1}}

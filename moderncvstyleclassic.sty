@@ -109,6 +109,7 @@
         \ifthenelse{\equal{\@addresscountry}{}}{}{\makenewline\@addresscountry}}%
       \phonesdetails% needs to be pre-rendered as loops and tabulars seem to conflict
       \ifthenelse{\isundefined{\@email}}{}{\makenewline\emailsymbol\emaillink{\@email}}%
+      \ifthenelse{\isundefined{\@secemail}}{}{\makenewline\emailsymbol\emaillink{\@secemail}}%
       \ifthenelse{\isundefined{\@homepage}}{}{\makenewline\homepagesymbol\httplink{\@homepage}}%
       \socialsdetails% needs to be pre-rendered as loops and tabulars seem to conflict
       \ifthenelse{\isundefined{\@extrainfo}}{}{\makenewline\@extrainfo}%
@@ -262,6 +263,7 @@
       \collectionloop{phones}{% the key holds the phone type (=symbol command prefix), the item holds the number
         \makenewline\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}%
       \ifthenelse{\isundefined{\@email}}{}{\makenewline\emailsymbol\emaillink{\@email}}%
+      \ifthenelse{\isundefined{\@secemail}}{}{\makenewline\emailsymbol\emaillink{\@secemail}}%
       \ifthenelse{\isundefined{\@homepage}}{}{\makenewline\homepagesymbol\httplink{\@homepage}}%
       \ifthenelse{\isundefined{\@extrainfo}}{}{\makenewline\@extrainfo}}%
     \end{minipage}\\[1em]
