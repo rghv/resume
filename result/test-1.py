@@ -5,6 +5,8 @@ class A():
         pass
     def f_A2 ():
         pass
+    def f_A3 ():
+        pass
 
 
 a=A()
