@@ -19,14 +19,16 @@ class MyClass():
 
     def checkList (self, alist):
         for i in range(len(alist)):
+            print alist[i]
 
 class MyOtherClass():
     """Definition for MyOtherClass"""
 
     def __init__ (self):
         pass
-
-            print alist[i]
+    
+    def methTwo(self):
+        pass
 
 if __name__=='__main__':
     c=MyClass()
