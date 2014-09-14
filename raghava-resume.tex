@@ -1,0 +1,456 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vinay Raghavan K S
+% Uses PDFLaTeX and moderncv 
+% [http://www.ctan.org/tex-archive/macros/latex/contrib/moderncv/]
+% To generate the resume in .pdf format, run pdflatex <filename>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper,sans]{moderncv}
+%\moderncvtheme[purple]{classic}
+\moderncvtheme[blue]{classic}
+% style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+%\moderncvstyle{casual}                             
+
+% color options 'blue' (default), 'orange', 'green', 'red', 'purple', 
+% 'grey' and 'black'
+%\moderncvcolor{blue}
+
+% char encoding
+\usepackage[utf8]{inputenc}
+
+% page margin adjustments
+\usepackage[scale=0.88888888]{geometry}
+
+%\usepackage{hyperref} % Not required now, as used url package
+
+\usepackage{url}
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+
+\AtBeginDocument{\setlength{\maketitlenamewidth}{10cm}}
+% required when changes are made to page layout lengths
+\AtBeginDocument{\recomputelengths} 
+
+% personal data
+\firstname{Vinay Raghavan}
+\familyname{K S}
+\title{Résumé}  
+\address{}{Bangalore, India}
+\mobile{+91-9986031265}
+\email{root@rghv.in}
+\secemail{raghavan.vinay@gmail.com} 
+%Modified the .cls and classic sty to have a newcommand \secemail
+\homepage{rghv.in}
+%\extrainfo{\url{linkd.in/11Qhxir}}
+% '64pt' is the height the picture must be resized to and 'picture' is the 
+% name of the picture file;
+%\photo[54pt]{img.jpeg}    
+\social[linkedin]{vinayraghavan}    
+\social[github]{rghv}             
+%\social[twitter]{\_raghava\_}      
+%\extrainfo{additional information}     
+%\photo[48pt][0.0pt]{img}                       % optional, remove / comment 
+% the line if not wanted; '64pt' is the height the picture must be resized to, 
+% 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) 
+% and 'picture' is the name of the picture file
+% \quote{"Always pass on what you have learned" - Master Yoda}                            
+
+% --------------------------------------
+% CONTENT
+% --------------------------------------
+\begin{document}
+\maketitle
+
+\definecolor{linky}{HTML}{0000AA}
+\newcommand\colorhref[3][linky]{\href{#2}{\small\color{#1}#3}}
+
+
+% --------------------------------------
+% ze Skillies and stuffies  
+% --------------------------------------
+\section{Technical skills}
+\cvcomputer
+{\textbf{Operating Systems}}{Gnu/Linux (various flavours), HP-UX, Sun\
+	Solaris, IBM AIX, MS Windows}
+{\textbf{Programming Languages}}{Python, C, C++, UNIX Shell scripting,\
+	Java, Javascript, Perl}
+\cvcomputer
+{\textbf{Development Tools/envs}}{Vim, CVS, svn, git, bash, ksh, Eclipse,\
+Cygwin, gdb/dbx/wdb, pdb, \textrm{\LaTeX}}
+{\textbf{Databases}}{Oracle, MongoDB, MS-SQL, MySQL}
+\cvcomputer
+{\textbf{Enterprise Software}}{
+	\hypersetup{linkcolor=blue}\colorhref{http://www.zeomega.com/what-we-provide/jiva/}{Jiva} population healthcare management solution,\
+	\hypersetup{linkcolor=blue}\colorhref{finacle.com}{Finacle} suite of banking products,\ 
+		ThunderHead Document Automation System, BIH Data Integration Platform
+}
+{\textbf{Software utilities and frameworks}}{RabbitMQ,\
+	Jenkins,\
+	Splunk,\
+	Mongo MMS,\
+	AWS Boto library,\
+	github Developer APIs,\
+	Apache suite,\
+	Rational Purify suite,\
+	Google App Engine,\
+	IBM WAS,\
+	HP FireBolt suite,\
+}
+{}{}
+\cvcomputer
+%{\textbf{Experienced in}}{Systems Architecture Design and Implementation,\
+%	DevOps Engineering, \
+%	Software Automation and Tools,\
+%	Systems Integration,\
+%	Software Interfaces Design and Implementation,\
+%	Build and Release (and Framework Design and Development for Continuous Integration and Continuous Delivery), \
+%	Systems and Process Workflow Design,\
+%	Performance Engineering,\
+%	Code coverage and profiling, OOAD-OOP, SOA frameworks, \
+%	Test Driven Development,\
+%	Toolchain Design and Development, \
+%	Metaprogramming, \
+%	Test Automation Framework Design and Implementation\
+%	Cloud Infrastructure Engineering (Amazon Web Services) \
+%}
+%{}{}
+{\textbf{Domain}}{Healthcare IT, Banking and Financials IT,\
+	Financial Systems, Reporting and Document Generation}
+{}{}
+\section{}
+\cvline
+{\textbf{Experienced in}}{Systems Architecture Design and Implementation, \
+	DevOps Engineering, \
+	Software Automation and Tools, \
+	Software Interfaces Design and Implementation, \
+	Systems Integration, \
+	Build-Release and Framework Design and Development for Continuous Integration and Continuous Delivery, \
+	Systems and Process Workflow Design, \
+	Performance Engineering, \
+	Code coverage and profiling, OOAD-OOP, SOA frameworks, \
+	Test Driven Development, \
+	Toolchain Design and Development, \
+	Metaprogramming, \
+	Test Automation Framework Design and Implementation, \
+	Cloud Infrastructure Engineering (Amazon Web Services) \
+	}
+%{}{}
+
+% --------------------------------------
+% EDUMACATION!!! 
+% --------------------------------------
+\section{Education}
+
+%1
+\cventry
+{September 2001 -- July 2005}
+{Bachelor of Engineering}
+{Computer Sciences and Engineering}
+{VTU Belgaum}
+{First Class}
+{} 
+
+%2
+\cventry
+{June 2001}
+{AISSCE, Class XII}
+{CBSE}
+{Distinction}
+{}
+{} 
+
+%3
+\cventry
+{June 1999}
+{AISSE, Class X}
+{CBSE}
+{Distinction}
+{} 
+{}
+
+% --------------------------------------
+% WORK EXPERIENCE
+% --------------------------------------
+\section{Work Experience \& Career Chronology}
+
+%0
+\cventry
+{July 2013 -- Present}
+{Tech Lead}
+{Software Tools, Utilities and Automation team}
+{\colorhref{www.zeomega.com}{ZeOmega Infotech Pvt Ltd, Bangalore}}
+{}
+{Tech Lead @ DevOps and Tools team. Responsibilities include design and development of\
+ software tools and frameworks aimed at build/release/delivery for SaaS and hosted\
+ solutions of Jiva PHMS. Also, designing and developing the internal software tools aimed at\
+ internal developer community, with objectives being better source code and infrastructure\
+ management. The role also includes catering to design and development of automation and\
+ utilities for the firm's flagship product - \hypersetup{linkcolor=blue}\colorhref{\
+ http://www.zeomega.com/what-we-provide/jiva/}{Jiva} population healthcare management solution.\
+\newline{}
+\newline{}
+\small {\textbf{Role:} Tech Lead. As part of DevOps @ ZeOmega, designed and implemented various\
+	tools and utilities for the product	(task scheduler etc) and automation of build/release/delivery pipeline,\
+	and tools for deployment/monitoring/failover.	Led and mentored a team of developers during the course\
+	of the project. Currently exploring Puppet/Ansible/OpenStack/Sensu/docker/Vagrant and building tools\
+	around them.
+}
+\newline{}
+\small {\textbf{Tools/Technologies:}\
+Python, Linux, Shell scripting, Web programming, Zope framework, GitHub Dev APIs,\
+Amazon Web Services, AWS boto, RabbitMQ, MongoDB, Python APScheduler} 
+\newline{}
+}
+
+%1
+\cventry
+{January 2013 -- July 2013}
+{Independent Consultant and Programmer}
+{Technology Consulting}
+{Bangalore}
+{}
+{Independent programmer and technology consultant specializing\
+ in matters related to open-source software,\
+ software tools/frameworks and systems integration.
+\newline{}
+\newline{}
+\small {\textbf{Role:} Programmer and Technology Consultant}
+\newline{}
+\small {\textbf{Tools/Technologies:}\
+C, Python, Linux, UNIX, Shell scripting, Web programming, XML, Oracle, MongoDB, GitHub APIs, Jenkins, AWS} 
+\newline{}
+}
+
+%2
+\cventry
+{October 2011 -- December 2012}
+{Product Technology Lead - ANZ Singapore Implementation Team}
+{Systems Integration Team, Finacle}
+{\colorhref{infosys.com}{Infosys Ltd, Singapore}}
+{} 
+{Designed and implemented enhancements to systems interfaces from Finacle to\
+various \colorhref{anz.com}{ANZ} systems (ThunderHead, BIH etc), providing\
+complete automation of statement, advice and report generation with a\
+non-native interface from Finacle to ANZ systems. \\
+As an implementation consultant part of Finacle-ANZ implementation team,\
+designed and implemented solutions for various software enhancements and\
+customization to existing interfaces between ANZ and Finacle Core Banking\
+systems.
+\newline{}
+\newline{}
+\small {\textbf{Role:} Led and mentored a team of developers and\
+	analysts as a Team Lead and Implementation Consultant, for design\
+	and development of enhancements and customization for ANZ Foundation\
+Programme and ANZ Philippines/HK.}
+\newline{}
+\small {\textbf{Tools/Technologies:}\
+C, C++, Python, Java, UNIX, Shell scripting, Finacle scripting, XML,\
+BIH/TH systems, Javascript, Oracle.} 
+\newline{}
+}
+%3
+\cventry
+{April 2010 -- September 2011}
+{Product Technology Lead - Finacle Core Engg., Mysore}
+{Tech Lead - Localization Framework, Finacle Technical Delivery Group}
+{\colorhref{infosys.com}{Infosys Ltd, Mysore}}
+{}
+{Designed and implemented enhancements and new features in internal tools,\
+infrastructure and frameworks for the newly carved Localization layer for\
+the Finacle product. End to end implementation of extension of tools for\
+Localization layer provided ability to design/code/implement/package\
+geographic locale specific solutions within the Finacle CBS. As part\
+of the systems optimization project handled performance enhancements\
+for the product.
+\newline{}
+\newline{}
+\small {\textbf{Role:} Led and mentored a team of developers and analysts\
+	as a Product Lead, for design and development of Localization layer of the\
+	Finacle CBS.}
+\newline{}
+\small {\textbf{Tools/Technologies:}\
+C, C++, Python, Java, UNIX, Shell scripting, Finacle scripting, XML,\
+Purify suite, Oracle.} 
+\newline{}
+\small {\textbf{Accolades}: Awarded the quarterly GEM award for Team\
+Excellence.}
+\newline{}
+}
+%4
+\cventry
+{October 2009 -- March 2010}
+{Technology Analyst - Finacle Core Engg., Mysore}
+{Finacle 10 Beta Build and Release Ops, Finacle Technical Delivery Group}
+{\colorhref{infosys.com}{Infosys Ltd, Mysore}}
+{}
+{Implemented features and enhancements to Finacle CBS build and patching\
+systems, patch maintenance systems and related internal tools and\
+infrastructure. Part of the most ambitious Finacle 10 Beta Program that\
+offered a host of new features and improvement in productivity of\
+Finacle CBS. 
+\newline{}
+\newline{}
+\small {\textbf{Role:} Led a team of developers as a Lead Developer, for\
+	design and development of enhancements to build, release and patching\
+	systems of Finacle CBS.}
+\newline{}
+\small {\textbf{Tools/Technologies:}\
+C, C++, Python, Java, UNIX, Shell scripting, Perl, Build and Release\
+toolkit (internal), Test Automation framework (internal), Finacle scripting,\
+Oracle.} 
+\newline{}
+\small {\textbf{Accolades}: Awarded the quarterly GEM award for Team\
+Excellence.}
+\newline{}
+}
+%5
+\cventry
+{October 2008 -- September 2009}
+{Module Lead - Finacle Core Engg., Mysore}
+{Finacle 10 Beta Program, Finacle Core Engg}
+{\colorhref{infosys.com}{Infosys Ltd, Mysore}}
+{}
+{As Module Lead being part of Finacle 10.1 Beta program, implemented a\
+host of new features and enhancements to the product. Design and\
+implementation of Restricted Account Access Monitoring System and\
+Foreign Cheques collection module, to name a few. Dabbled with\
+OpenSolaris to roll out a custom distro for Finacle development.
+\newline{}
+\newline{}
+\small {\textbf{Role:} Led and mentored a team of developers as a Lead\
+	Developer, for design and development of new features and enhancements\
+  for Finacle CBS.}
+\newline{}
+\small {\textbf{Tools/Technologies:}\
+C, C++, Python, Java, UNIX, Shell scripting, Build and Release toolkit\
+(internal), Finacle scripting, Javascript, Oracle.} 
+\newline{}
+\small {\textbf{Accolades}: Awarded the quarterly GEM award for Team\
+Excellence}
+\newline{}
+}
+%6
+\cventry
+{July 2005 -- September 2008}
+{Software Engineer - Finacle Core Engg., Mysore}
+{}
+{\colorhref{infosys.com}{Infosys Ltd, Mysore}}
+{}
+{Started off as rookie software engineer in Finacle business unit.\
+Implemented a host of new features and functionality in the\
+Wealth Management Systems module of the Finacle CBS. Implemented\
+enhancements to internal tools and frameworks.
+\newline{} 
+\newline{}
+\small {\textbf{Role:} Developer; designing and implementing new features\
+to WMS module of Finacle CBS.}
+\newline{}
+\small {\textbf{Tools/Technologies:}\
+C, C++, Java, UNIX, Shell scripting, Finacle scripting, Oracle, Javascript.} 
+\newline{}
+}
+
+% --------------------------------------
+% AVAILABILITY 
+% --------------------------------------
+%\section{Availability}
+%\cvlistitem
+%{\textit{\emph{Immediate}; no notice period.} 
+%}
+
+% --------------------------------------
+% PROJECTS
+% --------------------------------------
+%\pagebreak
+\section{Projects of Interest}
+\cvlistitem
+{\textbf{ReqBlood - an app to tweet blood requests over SMS} 
+  \\A recently developed app to allow people to tweet a blood request\
+    through an SMS to 55444.\\
+		{\small {\url{twitter.com/reqblood}}} \\
+		{\small Uses: Python, Google App Engine, 55444 SMS platform} 
+}
+\cvlistitem
+{\textbf{Dhvani TTS}  
+  \\A TTS system for Indic languages. Contributed in testing \
+		and minor fixes.\\
+		{\small {\url{dhvani.sourceforge.net}}} \\
+		{\small Uses: C, GNU/Linux, Python}
+}
+\cvlistitem
+{\textbf{Chiguru Linux}  
+  \\A volunteer effort as part of a group of technology enthusiasts that \
+		rolled out a Linux distro targeted at Kannada users.\\
+		{\small {\url{sourceforge.net/projects/kannada/files/Chiguru/}}} \\ 
+		{\small Uses: GNU/Linux, Remastering utilities, shell scripting, Python } 
+}
+
+% --------------------------------------
+% TALKS EVENTS ETC.
+% --------------------------------------
+\section{Talks given, Workshops/events participated in}
+\cventry{May 2014}{rootconf 2014}{Bangalore}{}{}
+{Participated in the conference and workshops.}
+\cventry{April 2008}{GNU/Linux Habba}{SERC, IISc, Bangalore}{}{}
+{Presented a talk on GNU/Linux for Kannada users. \\
+Hands-on workshop on various utilities available for Kannada on Linux.}
+\cventry{September 2008}{GNU/Linux Habba 2.0}{University of Mysore, Mysore}{}{}
+{Presented a talk on FOSS utilities/alternatives for students.} 
+\cventry{February 2009}{GNU/Linux Habba 3.0}{NMAMIT, NITTE}{}{}
+{Presented a talk on FOSS utilities for engineering students. \\
+Participated in development and launch of Chiguru Linux, a distro\
+made for Kannada users.}
+
+% --------------------------------------
+% INTERESTS / HOBBIES
+% --------------------------------------
+\section{Interests and Hobbies}
+\cvlistitem{A staunch believer and an enthusiast of FOSS/Open Source\
+philosophy/software.\\}
+\cvlistitem{An avid reader on technology, non-fiction books and websites.\\}
+\cvlistitem{Hobbyist digital artist.}
+
+%---------------------------------------
+% Personal Details 
+% --------------------------------------
+\section{Other details}
+\cvlistitem{Date of Birth   : 12 September 1983\\}
+\cvlistitem{Nationality     : Indian\\}
+\cvlistitem{Valid passport  : Available\\}
+
+%---------------------------------------
+% References? 
+% --------------------------------------
+\section{References}
+\cvlistitem{Can be provided upon request.}
+
+%---------------------------------------
+% DECLARATION 
+% --------------------------------------
+\section{Declaration}
+\cvlistitem{I hereby declare that the information furnished above is true\
+to the best of my knowledge and belief.\\ \\}
+
+\begin{minipage}{0.5\textwidth}
+\begin{flushleft}
+  \large
+\bfseries Bangalore
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+
+\begin{flushright}
+  \large
+\bfseries Vinay Raghavan \textsc{K S}
+\end{flushright}
+\end{minipage}
+
+% --------------------------------------
+% END
+% --------------------------------------
+\end{document}
