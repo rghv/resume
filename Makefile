@@ -13,7 +13,9 @@ all: pdf
 # missing file reference and interactively asking you for an alternative.
 
 pdf: raghava-resume.tex
-	latexmk -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make raghava-resume.tex
+#	latexmk -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make raghava-resume.tex
+#
+	cd gen; latexmk -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make raghava-resume.tex
 
 clean:
 	latexmk -C
