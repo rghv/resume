@@ -1,6 +1,8 @@
 # You want latexmk to *always* run, because make does not have all the info.
 .PHONY: pdf
 
+#test 
+
 # First rule should always be the default "all" rule, so both "make all" and
 # "make" will invoke it.
 all: pdf
