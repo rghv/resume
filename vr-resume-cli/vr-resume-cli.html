@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vinay Raghavan - CLI Resume</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap');
+
+    body {
+      background-color: #1e1e1e;
+      color: #dcdcdc;
+      font-family: 'Roboto Mono', monospace;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #terminal {
+      width: 90%;
+      max-width: 900px;
+      height: 80vh;
+      border: 1px solid #333;
+      border-radius: 8px;
+      background-color: #000;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #terminal::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(transparent 50%, rgba(255,255,255,0.05) 50%);
+      background-size: 100% 32px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    #output {
+      height: calc(100% - 30px);
+      overflow-y: auto;
+      padding-right: 10px;
+      margin-bottom: 30px;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    #output::-webkit-scrollbar {
+      display: none;
+    }
+
+    #input-line {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      z-index: 3;
+    }
+
+    #prompt {
+      color: #4EC9B0;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    #cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background-color: #fff;
+      animation: blink 1s step-end infinite;
+      margin-left: 2px;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    input {
+      background: transparent;
+      border: none;
+      color: #dcdcdc;
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      flex: 1;
+      outline: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .command {
+      color: #dcdcdc;
+    }
+
+    .response {
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      color: #CE9178;
+    }
+
+    .section-title {
+      color: #569CD6;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+
+    .list-item {
+      margin-left: 16px;
+      text-indent: -16px;
+      margin-bottom: 4px;
+    }
+
+    .link {
+      color: #4EC9B0;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .key {
+      background-color: #333;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 11px;
+      margin: 0 2px;
+    }
+
+    .shortcut {
+      color: #888;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .loading {
+      color: #888;
+    }
+
+    .ascii-art {
+      font-size: 11px;
+      line-height: 1.2;
+      color: #4EC9B0;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .info-box {
+      border: 1px solid #333;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      background-color: rgba(78, 201, 176, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      #terminal {
+        width: 95%;
+        height: 85vh;
+        padding: 15px;
+      }
+      #output {
+        font-size: 12px;
+      }
+      input {
+        font-size: 12px;
+      }
+      .ascii-art {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal">
+    <div id="output"></div>
+    <div id="input-line">
+      <span id="prompt">vr-resume-bot:~$</span>
+      <input type="text" id="command-input" autofocus />
+      <span id="cursor"></span>
+    </div>
+  </div>
+
+  <script>
+    const output = document.getElementById('output');
+    const input = document.getElementById('command-input');
+    const prompt = document.getElementById('prompt');
+
+    // ASCII Art with "vr-resume-bot"
+    const asciiArt = `
+             
+╻ ╻┏━┓   ┏━┓┏━╸┏━┓╻ ╻┏┳┓┏━╸   ┏┓ ┏━┓╺┳╸
+┃┏┛┣┳┛╺━╸┣┳┛┣╸ ┗━┓┃ ┃┃┃┃┣╸ ╺━╸┣┻┓┃ ┃ ┃ 
+┗┛ ╹┗╸   ╹┗╸┗━╸┗━┛┗━┛╹ ╹┗━╸   ┗━┛┗━┛ ╹ 
+                                                                     
+       VR ' S   I N T E R A C T I V E   R E S U M E   B O T
+    `;
+
+    const resumeData = {
+      intro: `Welcome to Vinay Raghavan's interactive CLI Resume v2025.08
+Type 'help' to see available commands or use shortcuts below.
+`,
+      help: `Available commands:
+  h/?/help - Show this help
+  a/ab/about - Brief intro about Vinay
+  s/sk/skills - View technical skills & competencies
+  e/ex/exp/experience - Work experience timeline
+  ac/ach/achievements - Key achievements
+  ed/edu/education - Educational background
+  st/strengths/int/interests - Strengths & interests
+  ct/contact - Contact information
+  c/cls/clear - Clear the screen
+
+Shortcuts: Click buttons below or use commands.
+`,
+      about: `Seasoned DevSecOps & CyberSecurity practitioner with 18+ years of experience building secure, scalable platforms for fintech, AI, and enterprise SaaS. Proven track record in scaling startups securely, leading ISO27001/GDPR/SOC2/DPDP23 compliance, and acting as fractional CISO & DPO. Combines deep technical fluency with strategic risk mitigation, privacy governance and Cloud Engg, SRE & FinOps.
+`,
+      skills: `__ SKILLS & COMPETENCIES __
+
+▫ <span class="highlight">CyberSecurity & Cyber Resilience</span>, Privacy Engineering, Data Risk Governance & Risk Mitigation.
+▫ <span class="highlight">DevSecOps</span>, Platform Engineering, Cloud Engineering, SRE, FinOps, AI Tooling & safety, DB SecOps.
+▫ Technical implementation for <span class="highlight">ISO27001, HIPAA, PCI-DSS, GDPR, SOC2, DPDP-23, NIST CSF 2.0</span>.
+▫ Mentoring & coaching DevSecOps/InfoSec teams to achieve high throughput and agility.
+▫ <span class="highlight">Linux</span>, IaC Tooling, Solution Architecture, Containers, CI/CD, SAST & DAST tooling, Secure SDLC.
+▫ SIEM & SOAR tooling, Threat Mapping & Threat Intelligence, Social Engineering Proofing.
+▫ <span class="highlight">AWS, Azure, DigitalOcean, GCP, Linode</span>.
+`,
+      experience: `__ WORK EXPERIENCE __
+
+<span class="highlight">ProDevOps (prodevops.com)</span> — Aug. 2021 – Present
+Consultant - DevSecOps, Cloud Engg, CyberSecurity, SRE, FinOps, Risk Mitigation
+  • Hands-on Consultant in DevSecOps, Cloud Engineering, CyberSecurity, for SMEs and start-ups.
+  • Service portfolio also includes Data & InfoSec, Privacy Engineering, Security Program Management, Tech Due Diligence, Cloud Cost optimization, Solution Architecture, Systems Engineering, AI tooling, safety & security, fractional CISO & DPO services.
+  • Building B2B SaaS tools and utilities for Data Privacy Management & Governance (Data Catalog, Consent Management System), Enterprise Risk Mitigation and Security Posture Management & Improvement.
+  • Technologies: Linux, Python, Jenkins, Open Source SIEM, SAST & DAST tools, SOAR tooling, ClaudeCode, OpenCode, n8n, Gemini, popular LLMs.
+
+<span class="highlight">Edge Networks Pvt Ltd</span> — Jun. 2024 – Feb. 2025
+vCISO & DPO
+  • Provided expert vCISO & DPO consulting services, steering DevSecOps and IT teams towards robust security compliance with ISO27001, GDPR, DPDP23 and SOC2 standards.
+  • Oversaw organizational security posture, ensuring adherence to certified protocols.
+  • Spearheaded InfoSec and data privacy strategies during acquisition by a larger corporation.
+  • Mentored teams on Secure Software Dev Framework, privacy-and-security-first design for AI products.
+  • Technologies: Linux, Python, IaC, ansible, terraform, k8s, Jenkins, AWS, Azure, Wazuh SIEM.
+
+<span class="highlight">Citrix R&D India</span> — Sep. 2020 – Aug. 2021
+Principal Cloud Platform Engineer
+  • Worked on tools, new features, and management of the internal cloud platform.
+  • Monitored and optimized cloud resources for high availability and cost-efficiency.
+  • Troubleshot and resolved issues at large-scale cloud infrastructure.
+  • Technologies: Linux, Rancher, terraform, helm, k8s, Jenkins, AWS, Azure.
+
+<span class="highlight">Edge Networks Pvt Ltd</span> — Jul. 2015 – Sep. 2020
+Architect - Platform, Applications & DevOps
+  • Designed enterprise architecture for the EdGE Talent Decision Platform.
+  • Scaled CloudOps to support 4x increase in deployments across geos.
+  • Laid foundations for DevSecOps, CloudOps & FinOps at EdGE.
+  • Hired and mentored the DevSecOps team, enabling adoption of containerization, CI/CD, infra-as-code, etc.
+  • Enhanced InfoSec posture and aided successful customer risk assessments.
+  • Technologies: Linux, Python, PostgreSQL, k8s, Jenkins, Cloud automation, Azure, DigitalOcean, AWS.
+
+<span class="highlight">ZeOmega Infotech Pvt Ltd</span> — Jul. 2013 – Jul. 2015
+Lead – DevOps & Tools
+  • Started and led the DevOps and Tools team.
+  • Strengthened build-release processes aligned with HIPAA needs.
+  • Built tooling for Cloud Management leading to efficiency and cost optimization.
+  • Hired and mentored DevSecOps team.
+  • Technologies: AWS, Linux, CloudOps, Python, MongoDB.
+
+<span class="highlight">Independent Consultant</span> — Jan. 2013 – Jun. 2013
+Consultant & Programmer - Cloud Tooling
+  • Technology consultant for startups and SMEs on Cloud Adoption, Management and Tooling.
+
+<span class="highlight">Infosys Ltd</span> — Jul. 2005 – Dec. 2012
+Implementation Consultant & other roles, Finacle
+  • Implementation Consultant for ANZ Singapore: Led Finacle CBS rollout across regions.
+  • Product Tech Lead: Internal tools & frameworks specialist; improved performance via systems optimization.
+  • Technology Analyst: Build and Release analyst; implemented security tools & optimizers.
+  • Module Lead: Implemented audit logging and restricted access governance system.
+  • Software Engineer: Implemented features in wealth management systems module.
+  • Technologies: UNIX, Linux, C, C++, Java, Python, MetaProgramming.
+`,
+      achievements: `__ ACHIEVEMENTS __
+
+• Helped Indian agencies in mitigating few major risks to critical national infrastructure post the ISoon/Anxun leaks and later.
+• Participated as a panel member for NASSCOM-DSCI round table on CyberSecurity Framework for Start-Ups.
+• Appreciated by DSCI-NASSCOM for designing a contextually suitable cybersecurity framework for Indian start-ups & SMEs.
+• Scaled DevSecOps for an AI-HRtech start-up from just two to 10+ marquee customers in India & abroad.
+• Designed, built & shipped systems reducing time to market by 50% for a popular core banking platform.
+`,
+      education: `__ EDUCATION __
+
+Bachelor of Engineering - Computer Science & Engineering
+VTU Belagavi, India. 2001-2005
+JNN College of Engineering, Shimoga, Karnataka, India
+VTU Roll Num: 4JN01CS072
+`,
+      strengths: `__ STRENGTHS & INTERESTS __
+
+Strengths: Passion, diligence, empathy, integrity, attention to detail, entrepreneurial spirit, team player.
+Interests: AI tooling, microkernels & unikernels, SoTA Systems Security, reading non-fiction, FOSS ecosystem.
+Volunteering: Core member of tech-volunteer group that built a Linux distro (Chiguru) for Kannada users, conducted many public Linux fests.
+`,
+      contact: `__ CONTACT __
+
+Email: <span class="link" onclick="copyToClipboard('vinay@prodevops.com')">vinay@prodevops.com</span>
+Phone: <span class="link" onclick="copyToClipboard('+91-9986031265')">+91-9986031265</span>
+Location: Bengaluru, India
+LinkedIn: <span class="link" onclick="window.open('https://linkedin.com/in/vinayraghavan', '_blank')">linkedin.com/in/vinayraghavan</span>
+Website: <span class="link" onclick="window.open('https://prodevops.com', '_blank')">prodevops.com</span>
+
+Nationality: Indian
+Language Proficiency: English, Kannada, Hindi
+References: Available upon request
+Notice Period: None; Immediate availability
+Location Preferences: In Office, Hybrid, WFO
+`
+    };
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        addToOutput(`<span style="color:#CE9178">✓ Copied to clipboard: ${text}</span>`);
+      });
+    }
+
+    function addToOutput(content, delay = 0) {
+      const line = document.createElement('div');
+      line.className = 'response';
+      
+      if (delay > 0) {
+        setTimeout(() => {
+          line.innerHTML = content;
+          output.appendChild(line);
+          scrollDown();
+        }, delay);
+      } else {
+        line.innerHTML = content;
+        output.appendChild(line);
+        scrollDown();
+      }
+    }
+
+    function scrollDown() {
+      output.scrollTop = output.scrollHeight;
+    }
+
+    // Create shortcut buttons
+    function createShortcuts() {
+      const shortcuts = [
+        { cmd: 'about', label: 'About' },
+        { cmd: 'skills', label: 'Skills' },
+        { cmd: 'exp', label: 'Experience' },
+        { cmd: 'ach', label: 'Achievements' },
+        { cmd: 'edu', label: 'Education' },
+        { cmd: 'contact', label: 'Contact' }
+      ];
+
+      let shortcutHtml = '<div class="shortcut">';
+      shortcuts.forEach(item => {
+        shortcutHtml += `<span class="key" onclick="document.getElementById('command-input').value='${item.cmd}'; simulateEnterKey()">${item.label}</span> `;
+      });
+      shortcutHtml += '</div>';
+      
+      addToOutput(shortcutHtml);
+    }
+
+    function simulateEnterKey() {
+      const event = new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter' });
+      input.dispatchEvent(event);
+    }
+
+    // Handle command input
+    function handleCommand(cmd) {
+      cmd = cmd.trim().toLowerCase();
+
+      if (!cmd) return;
+
+      addToOutput(`<span class="command">> ${cmd}</span>`);
+
+      switch (cmd) {
+        case 'help':
+        case 'h':
+        case '?':
+          addToOutput(resumeData.help, 100);
+          break;
+        case 'about':
+        case 'a':
+        case 'ab':
+          addToOutput(resumeData.about, 100);
+          break;
+        case 'skills':
+        case 's':
+        case 'sk':
+          addToOutput(resumeData.skills, 100);
+          break;
+        case 'exp':
+        case 'experience':
+        case 'e':
+        case 'ex':
+          addToOutput('<span class="loading">Loading experience...</span>', 50);
+          setTimeout(() => {
+            const loadingEl = output.lastChild;
+            loadingEl.innerHTML = '';
+            loadingEl.innerHTML = resumeData.experience;
+            scrollDown();
+          }, 800);
+          break;
+        case 'ach':
+        case 'achievements':
+        case 'ac':
+          addToOutput(resumeData.achievements, 100);
+          break;
+        case 'edu':
+        case 'education':
+        case 'ed':
+          addToOutput(resumeData.education, 100);
+          break;
+        case 'strengths':
+        case 'st':
+        case 'interests':
+        case 'int':
+          addToOutput(resumeData.strengths, 100);
+          break;
+        case 'contact':
+        case 'ct':
+          addToOutput(resumeData.contact, 100);
+          break;
+        case 'clear':
+        case 'cls':
+        case 'c':
+          output.innerHTML = '';
+          createShortcuts();
+          break;
+        default:
+          addToOutput(`Command not found: '${cmd}'. Type 'help' for available commands.`, 100);
+          break;
+      }
+    }
+
+    // Initial welcome
+    window.addEventListener('load', () => {
+      addToOutput(`<div class="ascii-art">${asciiArt}</div>`);
+      addToOutput(resumeData.intro, 500);
+      addToOutput('<span class="info-box">💡 Tip: Use shortcuts like <span class="key">about</span>, <span class="key">skills</span>, <span class="key">exp</span>, <span class="key">ach</span>, <span class="key">edu</span>, <span class="key">contact</span> or click the buttons below!</span>', 1000);
+      createShortcuts();
+    });
+
+    // Command input handling
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = input.value;
+        input.value = '';
+        handleCommand(cmd);
+      }
+    });
+
+    // Focus input on terminal click
+    document.getElementById('terminal').addEventListener('click', () => {
+      input.focus();
+    });
+
+    // Allow focus on input when clicking
+    input.addEventListener('focus', () => {
+      prompt.style.opacity = 1;
+    });
+
+    input.addEventListener('blur', () => {
+      prompt.style.opacity = 0.8;
+    });
+  </script>
+</body>
+</html>
