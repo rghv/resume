@@ -1,0 +1,218 @@
+basics:
+  name: Vinay Raghavan
+  label: DevSecOps & CyberSecurity Leader
+  email: vinay@prodevops.com
+  phone: "+91-9986031265"
+  url: https://prodevops.com
+  summary: >
+    Seasoned DevSecOps & CyberSecurity practitioner with 18+ years of experience building secure, scalable platforms for fintech, AI, and enterprise SaaS. Proven track record in scaling startups securely, leading ISO27001/GDPR/SOC2/DPDP23 compliance, and acting as fractional CISO & DPO. Combines deep technical fluency with strategic risk mitigation, privacy governance, and Cloud Engineering, SRE & FinOps.
+  location:
+    city: Bengaluru
+    region: Karnataka
+    countryCode: IN
+    address: Bengaluru, India
+  profiles:
+    - network: LinkedIn
+      username: vinayraghavan
+      url: https://linkedin.com/in/vinayraghavan
+
+work:
+  - name: ProDevOps
+    location: Bengaluru, India
+    position: Consultant – DevSecOps, Cloud Engineering, CyberSecurity, SRE, FinOps, Risk Mitigation
+    startDate: "2021-08-01"
+    endDate: null
+    summary: >
+      Hands-on Consultant in DevSecOps, Cloud Engineering, CyberSecurity for SMEs and startups. Service portfolio includes Data & InfoSec, Privacy Engineering, Security Program Management, Tech Due Diligence, Cloud Cost Optimization, Solution Architecture, Systems Engineering, AI tooling, safety & security, and fractional CISO & DPO services.
+    highlights:
+      - Building B2B SaaS tools and utilities for Data Privacy Management & Governance (Data Catalog, Consent Management System), Enterprise Risk Mitigation, and Security Posture Management & Improvement.
+      - Technologies: Linux, Python, Jenkins, Open Source SIEM, SAST & DAST tools, SOAR tooling, ClaudeCode, n8n, Gemini, popular LLMs
+
+  - name: Edge Networks Pvt Ltd
+    location: Bengaluru, India
+    position: vCISO & DPO
+    startDate: "2024-06-01"
+    endDate: "2025-02-01"
+    summary: >
+      Provided expert vCISO & DPO consulting services, steering DevSecOps and IT teams toward robust security compliance with ISO27001, GDPR, DPDP23, and SOC2 standards.
+    highlights:
+      - Oversaw organizational security posture, ensuring adherence to certified protocols and resilience levels.
+      - Developed and implemented comprehensive cybersecurity policies and procedures; conducted org-wide CyberRisk trainings.
+      - Spearheaded InfoSec and data privacy strategies during acquisition by a larger corporation.
+      - Mentored DevSecOps & Engineering teams on Secure Software Development Framework and privacy-first design for AI products.
+      - Technologies: Linux, Python, IaC, Ansible, Terraform, Kubernetes, Jenkins, AWS, Azure, Wazuh SIEM, SAST & DAST tools, SOAR tooling, Red & Blue Teaming
+
+  - name: Citrix R&D India
+    location: Bengaluru, India
+    position: Principal Cloud Platform Engineer
+    startDate: "2020-09-01"
+    endDate: "2021-08-01"
+    summary: >
+      Worked on tools, new features, and management of the internal cloud platform, enforcing cloud security best practices and compliance.
+    highlights:
+      - Monitored and optimized cloud resources to ensure high availability and cost-efficiency.
+      - Troubleshot and resolved issues in large-scale, complex cloud infrastructure.
+      - Technologies: Linux, Rancher, Terraform, Helm, Kubernetes, Jenkins, AWS, Azure
+
+  - name: Edge Networks Pvt Ltd
+    location: Bengaluru, India
+    position: Architect – Platform, Applications & DevOps
+    startDate: "2015-07-01"
+    endDate: "2020-09-01"
+    summary: >
+      Designed and developed enterprise architecture and platform components for the next-generation EdGE Talent Decision Platform.
+    highlights:
+      - Scaled CloudOps to support a 4x increase in total deployments across geographies.
+      - Laid foundations for DevSecOps, CloudOps & FinOps across SaaS and on-prem environments.
+      - Hired and mentored DevSecOps team; enabled adoption of containerization, CI/CD, and IaC.
+      - Enhanced InfoSec posture and led successful customer risk assessments.
+      - Optimized cloud spending via improved visibility and cost management.
+      - Technologies: Linux, Python, PostgreSQL, Kubernetes, Jenkins, AWS, Azure, GCP, Ansible, Terraform, MongoDB, Prometheus, CI/CD
+
+  - name: ZeOmega Infotech Pvt Ltd
+    location: Bengaluru, India
+    position: Lead – DevOps & Tools
+    startDate: "2013-07-01"
+    endDate: "2015-07-01"
+    summary: >
+      Started and led the DevOps and Tools team at ZeOmega.
+    highlights:
+      - Strengthened CI/CD pipelines for J IVA product line, aligning with HIPAA requirements.
+      - Built cloud management tooling for operational efficiency and cost optimization.
+      - Hired and mentored DevSecOps team.
+      - Technologies: AWS, Linux, Python, MongoDB, CI/CD, Containerization
+
+  - name: Independent Consultant
+    location: Bengaluru, India
+    position: Consultant & Programmer – Cloud Tooling
+    startDate: "2013-01-01"
+    endDate: "2013-06-01"
+    summary: >
+      Independent programmer and technology consultant for startups and SMEs on Cloud Adoption, Management, and Tooling.
+
+  - name: Infosys Ltd
+    location: Singapore; Mysuru, India
+    position: Implementation Consultant & Other Roles, Finacle
+    startDate: "2005-07-01"
+    endDate: "2012-12-01"
+    highlights:
+      - Implementation Consultant for ANZ Singapore (Dec 2011–Dec 2012): Led Finacle CBS rollout; integrated with ANZ sub-systems; managed testing and deployment.
+      - Product Tech Lead (Apr 2010–Dec 2011): Internal tools specialist; improved performance via systems optimization.
+      - Technology Analyst (Oct 2009–Mar 2010): Build & Release; implemented security tools and optimizers.
+      - Module Lead (Oct 2008–Sep 2009): Designed and shipped audit logging and access governance system.
+      - Software Engineer (Jul 2005–Sep 2008): Implemented features in wealth management module of Finacle CBS.
+      - Technologies: UNIX, Linux, C, C++, Java, Python, MetaProgramming, Release Engineering, CI/CD
+
+volunteer:
+  - organization: FOSS Volunteer Group
+    position: Core Member
+    summary: >
+      Core member of a tech-volunteer group that built a Linux distro (Chiguru) for Kannada users and conducted public Linux fests.
+
+education:
+  - institution: JNN College of Engineering
+    area: Computer Science & Engineering
+    studyType: Bachelor of Engineering
+    city: Shimoga
+    country: India
+    startDate: "2001-06-01"
+    endDate: "2005-05-01"
+    gpa: "VTU Roll Num: 4JN01CS072"
+
+skills:
+  - name: CyberSecurity & Cyber Resilience
+    level: Expert
+    keywords:
+      - Privacy Engineering
+      - Risk Mitigation
+      - SOC2
+      - ISO27001
+      - GDPR
+      - DPDP23
+      - NIST CSF 2.0
+      - HIPAA
+      - PCI-DSS
+  - name: DevSecOps & Cloud
+    level: Expert
+    keywords:
+      - DevSecOps
+      - Platform Engineering
+      - Cloud Engineering
+      - SRE
+      - FinOps
+      - DB SecOps
+      - IaC
+      - CI/CD
+      - Secure SDLC
+  - name: AI & Automation
+    level: Expert
+    keywords:
+      - AI Tooling
+      - AI Safety
+      - n8n
+      - ClaudeCode
+      - LLMs
+      - SOAR
+  - name: Technologies & Tools
+    level: Expert
+    keywords:
+      - Linux
+      - Python
+      - Ansible
+      - Terraform
+      - Kubernetes
+      - Jenkins
+      - AWS
+      - Azure
+      - GCP
+      - DigitalOcean
+      - Wazuh SIEM
+      - SAST
+      - DAST
+      - Prometheus
+      - Rancher
+      - Helm
+
+awards:
+  - title: Appreciated by DSCI-NASSCOM
+    awarder: DSCI-NASSCOM
+    summary: Designed a contextually suitable cybersecurity framework for Indian startups and SMEs.
+  - title: Panel Member
+    awarder: NASSCOM-DSCI
+    summary: Participated in a roundtable on CyberSecurity Framework for Startups.
+
+publications:
+  - name: National Cybersecurity Contributor
+    publisher: DSCI-NASSCOM
+    summary: Helped Indian agencies mitigate major risks to critical national infrastructure post ISoon/Anxun leaks.
+
+interests:
+  - name: Technology
+    keywords:
+      - AI Tooling
+      - Microkernels
+      - Unikernels
+      - SoTA Systems Security
+  - name: Community
+    keywords:
+      - FOSS Ecosystem
+      - Linux Advocacy
+  - name: Personal
+    keywords:
+      - Reading Non-Fiction
+
+languages:
+  - language: English
+    fluency: Fluent
+  - language: Kannada
+    fluency: Native
+  - language: Hindi
+    fluency: Fluent
+
+references:
+  - name: Available upon request
+    reference: References available upon request.
+
+meta:
+  version: 1.0.0
+  theme: modern
